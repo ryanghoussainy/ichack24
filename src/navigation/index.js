@@ -18,8 +18,8 @@ const Navigator = () => {
           headerTintColor: "blue",
         }}
       >
-        <Stack.Screen name="Home" component={MainTabNavigator} />
-        <Stack.Screen name="Workout in progress!" component={TimerScreen} />
+        <Stack.Screen name="You are home!" component={MainTabNavigator} />
+        <Stack.Screen name="Workout" component={TimerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

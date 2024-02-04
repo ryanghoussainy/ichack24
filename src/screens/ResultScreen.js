@@ -20,15 +20,37 @@ const TimerScreen = ({ navigation }) => {
             userId: "7b20748f-29ac-4f90-9bf6-c77485a4e06b",
           },
         }
-      ).then((res) => {
-        return res.text();
-      }).catch((err) => {});
+      )
+        .then((res) => {
+          return res.text();
+        })
+        .catch((err) => {});
       console.log(url);
     };
     fetchUrl();
   }, []);
 
-  return <View></View>;
+  handleSubmit = () => {
+    navigation.navigate("Dashboard");
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text>Our predictions...</Text>
+      <TouchableOpacity onPress={handleSubmit}>
+        <Text>Return to dashboard</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 export default TimerScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

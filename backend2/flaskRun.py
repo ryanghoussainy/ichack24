@@ -64,6 +64,7 @@ def home():
 
     return "hello world"
 
+import random
 
 @app.route("/consumeTerraWebhook", methods=["POST"])
 def consume_terra_webhook() -> flask.Response:
@@ -97,28 +98,31 @@ def connect():
     return url
 
 
-@app.route("/send", methods=['POST'])
+@app.route("/send", methods=['POST', 'GET'])
 def send():
-    user_id = request.args.get("user_id")
-    start_data = "2024-02-04"
-    start_data = "2024-02-04"
-    # todo end_data ?
-    end_data = "2024-02-04"
-    url = "https://api.tryterra.co/v2/sleep?user_id="+user_id+"&start_date="+start_data+"&end_date="+end_data+"&to_webhook=true&with_samples=true"
-    headers = {
-        "accept": "application/json",
-        "dev-id": DEV_ID,
-        "x-api-key": API_KEY
-    }
+    # user_id = request.args.get("user_id")
+    # start_data = "2024-02-04"
+    # start_data = "2024-02-04"
+    # # todo end_data ?
+    # end_data = "2024-02-04"
+    # url = "https://api.tryterra.co/v2/sleep?user_id="+user_id+"&start_date="+start_data+"&end_date="+end_data+"&to_webhook=true&with_samples=true"
+    # headers = {
+    #     "accept": "application/json",
+    #     "dev-id": DEV_ID,
+    #     "x-api-key": API_KEY
+    # }
 
+    # protoper = "protoper.json"
+    # with open(protoper, 'r') as file:
+    #     protoper_data = json.load(file)
+    # protoper = normalize_json(protoper_data)    
+    # loaded_model = keras.models.load_model('test_train.keras')
+    # np_data = protoper.to_numpy()
+    # new_data_expanded = np.expand_dims(np_data, axis=1)
+    # predictions = loaded_model.predict(new_data_expanded,verbose=0)
 
+    predictions = random.randint(60,300)
 
-    response = requests.get(url, headers=headers)
-    returnedData = response.json()
-    loaded_model = keras.models.load_model('test_train.keras')
-    np_data = returnedData.to_numpy()
-    new_data_expanded = np.expand_dims(np_data, axis=1)
-    predictions = loaded_model.predict(new_data_expanded,verbose=0)
     print(f'Predicted Active minutes: {predictions/60}')
 
     
@@ -140,7 +144,7 @@ def sse():
 @app.route('/getSession', methods=["GET"])
 def getSession():
     print(clients)
-    return clients[0]
+    return clients
 
 @app.route("/on_auth_success", methods=['GET'])
 def on_auth_success():

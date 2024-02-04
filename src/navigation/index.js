@@ -3,7 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StyleSheet } from "react-native";
 
 import TimerScreen from "../screens/TimerScreen";
-import MainTabNavigator from "./MainTabNavigator";
+import HomeScreen from "../screens/HomeScreen";
+import PromptInformationScreen from "../screens/PromptInformationScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +20,8 @@ const Navigator = () => {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="Dashboard" component={MainTabNavigator} />
+        <Stack.Screen name="Prompt" component={PromptInformationScreen} />
+        <Stack.Screen name="Dashboard" component={HomeScreen} />
         <Stack.Screen name="Workout" component={TimerScreen} />
       </Stack.Navigator>
     </NavigationContainer>

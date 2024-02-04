@@ -1,18 +1,82 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { StyleSheet, Text, View } from "react-native";
-import { useWindowDimensions } from "react-native";
+import { StyleSheet } from "react-native";
 import Navigator from "./src/navigation/index";
-import RenderHtml from "react-native-render-html";
-// import Widget from "./src/components/Widget";
+import PromptInformationScreen from "./src/screens/PromptInformationScreen";
+import * as WebBrowser from "expo-web-browser";
 
-export default function App() {
+import { withAuthenticator } from "aws-amplify-react-native";
+import { Amplify } from "aws-amplify";
+import awsconfig from "./src/aws-exports";
+
+import { Auth, API, graphqlOperation } from "aws-amplify";
+import { createUser } from "./src/graphql/mutations";
+import { getUser } from "./src/graphql/queries";
+
+Amplify.configure(awsconfig);
+
+const promptingData = async () => {
+  // get Auth user
+  const authUser = await Auth.currentAuthenticatedUser({
+    bypassCache: true,
+  });
+
+  // query database using Auth user id (sub)
+  const userData = await API.graphql(
+    graphqlOperation(getUser, { id: authUser.attributes.sub })
+  );
+
+  return userData.data.getUser != null;
+}
+
+function App() {
   const [url, setUrl] = useState("");
+  const [authUser, setAuthUser] = useState("");
+
+  useEffect(() => {
+    const fetchAuthUser = async () => {
+      const user = await Auth.currentAuthenticatedUser({
+        bypassCache: true,
+      });
+      setAuthUser(user);
+    }
+    fetchAuthUser();
+  }, [])
+
+  useEffect(() => {
+    const syncUser = async () => {
+      // query database using Auth user id (sub)
+      const userData = await API.graphql(
+        graphqlOperation(getUser, { id: authUser.attributes.sub })
+      );
+
+      if (userData.data.getUser) {
+        return;
+      }
+
+      // if there is no user, prompt user to enter data
+      promptingData = true;
+
+      const newUser = {
+        id: authUser.attributes.sub,
+        name: "x",
+        age: "x",
+        weight: "x",
+        height: "x",
+      };
+
+      createUser = async () => {
+        await API.graphql(graphqlOperation(createUser, { input: newUser }));
+      };
+    };
+    syncUser();
+
+  }, []);
 
   useEffect(() => {
     const fetchUrl = async () => {
       const url = await fetch(
-        "https://6b0c-2a0c-5bc0-40-3e3d-13ec-d32e-b440-2277.ngrok-free.app/connect",
+        "https://d14c-2a0c-5bc0-40-3e3d-425a-48fc-c88a-de5b.ngrok-free.app/connect",
         {
           method: "GET",
           headers: new Headers({
@@ -22,24 +86,13 @@ export default function App() {
       ).then((res) => {
         return res.text();
       });
-      console.log(url);
-      window.location = url;
+      WebBrowser.openBrowserAsync(url);
     };
     fetchUrl();
   }, []);
 
-  const { width } = useWindowDimensions();
-
   return (
-    <View>
-      <Text>Hello</Text>
-      {/* <RenderHtml
-        contentWidth={width}
-        source={{ uri: url, headers: { mode: "no-cors" } }}
-      /> */}
-    </View>
-    // <Widget />
-    // <Navigator />
+    <Navigator />
   );
 }
 
@@ -51,3 +104,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default withAuthenticator(App);

@@ -40,7 +40,7 @@ const TimerScreen = ({ navigation }) => {
   }, [status]);
 
   useEffect(() => {
-    if (time > 1000 * 60 * 0.1) {
+    if (time > 1000 * 100 * 0.1) {
       Alert.alert("Workout completed!!", "Great job! 🎉🎉🎉");
       setStatus(0);
       handleStop();

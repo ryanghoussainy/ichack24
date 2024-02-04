@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-militaryready-staging-91249-authRole",
+      "UnauthRoleArn": "arn:aws:iam::637423635718:role/amplify-militaryready-staging-91249-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::637423635718:role/amplify-militaryready-staging-91249-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-militaryready-staging-91249-deployment",
+      "UnauthRoleName": "amplify-militaryready-staging-91249-unauthRole",
+      "StackName": "amplify-militaryready-staging-91249",
+      "StackId": "arn:aws:cloudformation:eu-west-2:637423635718:stack/amplify-militaryready-staging-91249/917724f0-c33d-11ee-8143-069c01797277",
+      "AmplifyAppId": "d5qapbkggtvvo"
+    },
+    "categories": {
+      "auth": {
+        "MilitaryReady": {}
+      }
+    }
+  }
+}

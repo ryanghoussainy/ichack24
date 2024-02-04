@@ -14,19 +14,11 @@ const Timer = ({ time }) => {
     return formattedValue;
   };
 
-  // const transformMilliseconds = () => {
-  //   const convertedValue = Math.floor((time / 10) % 100);
-  //   const formattedValue = ("0" + convertedValue).slice(-2);
-  //   return formattedValue;
-  // };
-
   return (
     <View>
       <Text style={{ fontSize: 100, color: "white", marginTop: 50, fontWeight: "bold" }}>
         {transformMinutes()}:
         {transformSeconds()}
-        {/* :<Text> </Text> */}
-        {/* {transformMilliseconds()} */}
       </Text>
     </View>
   );

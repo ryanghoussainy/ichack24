@@ -66,7 +66,9 @@ function App() {
       };
 
       createUser = async () => {
-        await API.graphql(graphqlOperation(createUser, { input: newUser }).catch((err) => {}));
+        await API.graphql(
+          graphqlOperation(createUser, { input: newUser }).catch((err) => {})
+        );
       };
     };
     syncUser();
@@ -82,15 +84,14 @@ function App() {
             "ngrok-skip-browser-warning": "69420",
           }),
         }
-      ).then((res) => {
-        return res.text();
-      }).catch((err) => {});
-      WebBrowser.openBrowserAsync(url);
-    };
-    fetchUrl();
+      )
+        .then((res) => {
+          return res.text();
+        })
+        .catch((err) => {});
+      await WebBrowser.openBrowserAsync(url);
 
-    const fetchSession = async () => {
-      const url = await fetch(
+      const url2 = await fetch(
         "https://d14c-2a0c-5bc0-40-3e3d-425a-48fc-c88a-de5b.ngrok-free.app/getSession",
         {
           method: "GET",
@@ -99,11 +100,11 @@ function App() {
           }),
         }
       ).then((res) => {
-        console.log(res.text());
+        console.log(res);
         return res.text();
       });
     };
-    fetchSession();
+    fetchUrl();
   }, []);
 
   return <Navigator />;

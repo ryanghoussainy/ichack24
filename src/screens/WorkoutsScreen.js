@@ -1,12 +1,21 @@
 import { View, Text } from "react-native";
-import React from "react";
+import { StyleSheet } from "react-native-web";
 
 const WorkoutsScreen = () => {
   return (
     <View>
-      <Text>WorkoutsScreen</Text>
+      <Text style={styles.greeting}>Workouts</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  greeting: {
+    fontSize: 30,
+    textAlign: "center",
+    margin: 25,
+    fontWeight: "bold",
+  },
+})
 
 export default WorkoutsScreen;

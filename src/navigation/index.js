@@ -16,9 +16,10 @@ const Navigator = () => {
           headerStyle: styles.navigation,
           headerTitleStyle: styles.title,
           headerTintColor: "blue",
+          headerShown: false,
         }}
       >
-        <Stack.Screen name="You are home!" component={MainTabNavigator} />
+        <Stack.Screen name="Dashboard" component={MainTabNavigator} />
         <Stack.Screen name="Workout" component={TimerScreen} />
       </Stack.Navigator>
     </NavigationContainer>

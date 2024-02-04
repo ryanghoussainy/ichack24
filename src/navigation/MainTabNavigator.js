@@ -16,11 +16,11 @@ const MainTabNavigator = () => {
         component={WorkoutsScreen}
         options={() => ({
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="dna" size={24} color={color} />
+            <MaterialCommunityIcons name="dna" size={30} color={color} />
           ),
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarActiveTintColor: "yellow",
+          tabBarActiveTintColor: "orange",
         })}
       />
 
@@ -29,11 +29,11 @@ const MainTabNavigator = () => {
         component={HomeScreen}
         options={() => ({
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" size={24} color={color} />
+            <MaterialCommunityIcons name="home" size={30} color={color} />
           ),
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarActiveTintColor: "yellow",
+          tabBarActiveTintColor: "orange",
         })}
       />
 
@@ -42,11 +42,11 @@ const MainTabNavigator = () => {
         component={ProfileScreen}
         options={() => ({
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" size={24} color={color} />
+            <MaterialCommunityIcons name="account" size={30} color={color} />
           ),
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarActiveTintColor: "yellow",
+          tabBarActiveTintColor: "orange",
         })}
       />
     </Tab.Navigator>
@@ -55,7 +55,6 @@ const MainTabNavigator = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: "gray",
     borderTopWidth: 0,
   },
 });

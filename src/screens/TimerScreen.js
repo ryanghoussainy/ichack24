@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Alert,
 } from "react-native";
 
 const TimerScreen = ({ navigation }) => {
@@ -32,7 +33,6 @@ const TimerScreen = ({ navigation }) => {
     } else {
       clearInterval(timerID);
       reset();
-      // if (status === -1) reset();
     }
     return () => {
       clearInterval(timerID);
@@ -41,28 +41,22 @@ const TimerScreen = ({ navigation }) => {
 
   useEffect(() => {
     if (time > 1000 * 60 * 0.1) {
-      alert("Workout completed");
+      Alert.alert("Workout completed!!", "Great job! 🎉🎉🎉");
       setStatus(0);
+      handleStop();
     }
   }, [time]);
-
-  // const handlePause = () => {
-  //   setStatus(status === 0 ? 1 : 0);
-  // };
 
   const handleStop = () => {
     // make call to backend
     setStatus(0);
-    // navigation.navigate("Home");
+    navigation.navigate("Dashboard");
   };
-
-  // 3 2 1
 
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center", paddingBottom: 50 }}>
         <Timer time={time} />
-        <Text>Target: 80 mins</Text>
       </View>
 
       <View
@@ -73,35 +67,25 @@ const TimerScreen = ({ navigation }) => {
         }}
       >
         <View style={{ flex: 1 }}>
-          <Text>Intensity rate:</Text>
+          <Text style={styles.upperLabel}>Heart Rate:</Text>
           <View style={{ alignItems: "center" }}>
             <Text style={styles.dataText}>100 BPM</Text>
-            <Text style={styles.dataText}>Target: 80 BPM</Text>
           </View>
         </View>
         <View style={{ flex: 1 }}>
-          <Text>Heart rate:</Text>
+          <Text style={styles.upperLabel}>Blood-oxygen Level:</Text>
           <View style={{ alignItems: "center" }}>
-            <Text style={styles.dataText}>100 BPM</Text>
-            <Text style={styles.dataText}>Target: 80 BPM</Text>
+            <Text style={styles.dataText}>93%</Text>
           </View>
         </View>
       </View>
       <TouchableOpacity onPress={handleStop} style={styles.stopButton}>
         <Text
-          style={{ position: "absolute", top: windowWidth * 0.2, fontSize: 30 }}
+          style={{ position: "absolute", top: windowWidth * 0.2, fontSize: 40, color: "white", fontWeight: "bold"}}
         >
           STOP
         </Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity onPress={handlePause}>
-        <Text>{status === 1 ? "Pause" : "Resume"}</Text>
-      </TouchableOpacity>
-      {status === 0 && (
-        <TouchableOpacity onPress={handleStop}>
-          <Text>End workout</Text>
-        </TouchableOpacity>
-      )} */}
     </View>
   );
 };
@@ -114,24 +98,32 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "orange",
+    margin: 10,
+    borderRadius: 20,
+    marginTop: 40,
   },
   stopButton: {
     position: "absolute",
-    bottom: -(windowWidth * 0.4),
-    backgroundColor: "white",
-    borderRadius: windowWidth * 0.4,
-    width: windowWidth * 0.8,
-    height: windowWidth * 0.8,
+    bottom: -(windowWidth * 0.5),
+    backgroundColor: "orange",
+    borderRadius: windowWidth * 0.5,
+    width: windowWidth,
+    height: windowWidth,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "white",
-    borderWidth: 10,
-    elevation: 10,
+    borderColor: "whitesmoke",
+    borderWidth: 40,
   },
   dataText: {
     fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+  },
+  upperLabel: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#fbda9d",
   },
 });
 

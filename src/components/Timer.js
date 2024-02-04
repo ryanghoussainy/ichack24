@@ -22,8 +22,8 @@ const Timer = ({ time }) => {
 
   return (
     <View>
-      <Text style={{ fontSize: 90 }}>
-        {transformMinutes()} :<Text> </Text>
+      <Text style={{ fontSize: 100, color: "white", marginTop: 50, fontWeight: "bold" }}>
+        {transformMinutes()}:
         {transformSeconds()}
         {/* :<Text> </Text> */}
         {/* {transformMilliseconds()} */}

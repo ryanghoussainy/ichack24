@@ -27,7 +27,7 @@ const promptingData = async () => {
   ).catch((err) => {});
 
   return userData.data.getUser != null;
-}
+};
 
 function App() {
   const [url, setUrl] = useState("");
@@ -39,9 +39,9 @@ function App() {
         bypassCache: true,
       }).catch((err) => {});
       setAuthUser(user);
-    }
+    };
     fetchAuthUser();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const syncUser = async () => {
@@ -70,7 +70,6 @@ function App() {
       };
     };
     syncUser();
-
   }, []);
 
   useEffect(() => {
@@ -89,11 +88,25 @@ function App() {
       WebBrowser.openBrowserAsync(url);
     };
     fetchUrl();
+
+    const fetchSession = async () => {
+      const url = await fetch(
+        "https://d14c-2a0c-5bc0-40-3e3d-425a-48fc-c88a-de5b.ngrok-free.app/getSession",
+        {
+          method: "GET",
+          headers: new Headers({
+            "ngrok-skip-browser-warning": "69420",
+          }),
+        }
+      ).then((res) => {
+        console.log(res.text());
+        return res.text();
+      });
+    };
+    fetchSession();
   }, []);
 
-  return (
-    <Navigator />
-  );
+  return <Navigator />;
 }
 
 const styles = StyleSheet.create({

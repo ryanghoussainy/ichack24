@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { useWindowDimensions } from "react-native";
 import Navigator from "./src/navigation/index";
 import RenderHtml from "react-native-render-html";
+import ResultScreen from "./src/screens/ResultScreen";
 // import Widget from "./src/components/Widget";
 
 export default function App() {
@@ -31,13 +32,14 @@ export default function App() {
   const { width } = useWindowDimensions();
 
   return (
-    <View>
-      <Text>Hello</Text>
-      {/* <RenderHtml
-        contentWidth={width}
-        source={{ uri: url, headers: { mode: "no-cors" } }}
-      /> */}
-    </View>
+    <ResultScreen />
+    // <View>
+    //   <Text>Hello</Text>
+    //   {/* <RenderHtml
+    //     contentWidth={width}
+    //     source={{ uri: url, headers: { mode: "no-cors" } }}
+    //   /> */}
+    // </View>
     // <Widget />
     // <Navigator />
   );

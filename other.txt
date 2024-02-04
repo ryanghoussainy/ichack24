@@ -1,0 +1,45 @@
+const [url, setUrl] = useState("");
+// useEffect(() => {
+//   const fetchUrl = async () => {
+//     // const url = await fetch(
+//     //   "https://6b0c-2a0c-5bc0-40-3e3d-13ec-d32e-b440-2277.ngrok-free.app/connect",
+//     //   {
+//     //     method: "GET",
+//     //     headers: new Headers({
+//     //       "ngrok-skip-browser-warning": "69420",
+//     //     }),
+//     //   }
+//     // ).then((res) => {
+//     //   return res.text();
+//     // });
+
+//     const url = await fetch(
+//       "https://api.tryterra.co/v2/auth/generateWidgetSession",
+//       {
+//         method: "POST",
+//         headers: {
+//           "dev-id": "ichack-testing-cgyBGcj290",
+//           "x-api-key": "**************",
+//         },
+//         body: JSON.stringify({
+//           reference_id: "test-username",
+//           lang: "en",
+//         }),
+//       }
+//     )
+//       .then((res) => res.json())
+//       .then((data) => data.url);
+
+//     console.log(url);
+//     setUrl(url);
+//   };
+//   fetchUrl();
+// }, []);
+
+    // <RenderHtml
+    //   contentWidth={width}
+    //   source={{ uri: url, headers: { mode: "no-cors" } }}
+    // />
+
+
+  const { width } = useWindowDimensions();

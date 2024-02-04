@@ -5,6 +5,7 @@ import { StyleSheet } from "react-native";
 import TimerScreen from "../screens/TimerScreen";
 import HomeScreen from "../screens/HomeScreen";
 import PromptInformationScreen from "../screens/PromptInformationScreen";
+import ResultScreen from "../screens/ResultScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const Navigator = () => {
         <Stack.Screen name="Prompt" component={PromptInformationScreen} />
         <Stack.Screen name="Dashboard" component={HomeScreen} />
         <Stack.Screen name="Workout" component={TimerScreen} />
+        <Stack.Screen name="Result" component={ResultScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

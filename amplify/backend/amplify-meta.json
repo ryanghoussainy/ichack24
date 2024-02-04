@@ -1,0 +1,92 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-militaryready-staging-91249-authRole",
+      "UnauthRoleArn": "arn:aws:iam::637423635718:role/amplify-militaryready-staging-91249-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::637423635718:role/amplify-militaryready-staging-91249-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-militaryready-staging-91249-deployment",
+      "UnauthRoleName": "amplify-militaryready-staging-91249-unauthRole",
+      "StackName": "amplify-militaryready-staging-91249",
+      "StackId": "arn:aws:cloudformation:eu-west-2:637423635718:stack/amplify-militaryready-staging-91249/917724f0-c33d-11ee-8143-069c01797277",
+      "AmplifyAppId": "d5qapbkggtvvo"
+    }
+  },
+  "auth": {
+    "MilitaryReady": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ]
+        },
+        "signupAttributes": [],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "eu-west-2_aearutTO1",
+        "AppClientIDWeb": "4tfp1premu1nks3k42ckdm5q9m",
+        "AppClientID": "7u6v9nsbi0oipn2a1tkg0teike",
+        "IdentityPoolId": "eu-west-2:a5f22764-b67e-47c0-85c0-343cb16de438",
+        "UserPoolArn": "arn:aws:cognito-idp:eu-west-2:637423635718:userpool/eu-west-2_aearutTO1",
+        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolName": "MilitaryReady"
+      },
+      "lastPushTimeStamp": "2024-02-04T10:10:55.405Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-militaryready-staging-91249-deployment/amplify-cfn-templates/auth/MilitaryReady-cloudformation-template.json",
+        "logicalId": "authMilitaryReady"
+      }
+    }
+  },
+  "api": {
+    "MilitaryReady": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "rtyoem3nrnezjcf7cwxspxvffa",
+        "GraphQLAPIEndpointOutput": "https://ogapatuwrfdy5lor6ufzkfigaa.appsync-api.eu-west-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-t4jafu562vfudeolergs6av4ui"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-militaryready-staging-91249-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiMilitaryReady"
+      },
+      "lastPushTimeStamp": "2024-02-04T10:10:55.426Z",
+      "lastPushDirHash": "kjRSowjB2Gp6ChlStQ8AKLHIV9U="
+    }
+  }
+}

@@ -19,12 +19,12 @@ const promptingData = async () => {
   // get Auth user
   const authUser = await Auth.currentAuthenticatedUser({
     bypassCache: true,
-  });
+  }).catch((err) => {});
 
   // query database using Auth user id (sub)
   const userData = await API.graphql(
     graphqlOperation(getUser, { id: authUser.attributes.sub })
-  );
+  ).catch((err) => {});
 
   return userData.data.getUser != null;
 }
@@ -37,7 +37,7 @@ function App() {
     const fetchAuthUser = async () => {
       const user = await Auth.currentAuthenticatedUser({
         bypassCache: true,
-      });
+      }).catch((err) => {});
       setAuthUser(user);
     }
     fetchAuthUser();
@@ -48,7 +48,7 @@ function App() {
       // query database using Auth user id (sub)
       const userData = await API.graphql(
         graphqlOperation(getUser, { id: authUser.attributes.sub })
-      );
+      ).catch((err) => {});
 
       if (userData.data.getUser) {
         return;
@@ -66,7 +66,7 @@ function App() {
       };
 
       createUser = async () => {
-        await API.graphql(graphqlOperation(createUser, { input: newUser }));
+        await API.graphql(graphqlOperation(createUser, { input: newUser }).catch((err) => {}));
       };
     };
     syncUser();
@@ -85,7 +85,7 @@ function App() {
         }
       ).then((res) => {
         return res.text();
-      });
+      }).catch((err) => {});
       WebBrowser.openBrowserAsync(url);
     };
     fetchUrl();

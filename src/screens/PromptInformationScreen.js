@@ -36,10 +36,10 @@ const PromptInformationScreen = ({ authUserID }) => {
         height: height,
       }
 
-      createUser = async () => {
+      const createUser = async () => {
         await API.graphql(
           graphqlOperation(updateUser, { input: newUser })
-        )
+        ).catch((err) => {})
       }
       createUser();
       navigation.navigate("Dashboard")

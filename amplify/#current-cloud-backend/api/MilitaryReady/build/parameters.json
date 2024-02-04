@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "MilitaryReady",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-militaryready-staging-91249-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/d9bac00d52c829a7edcb201e1be91a4f54ac5ee8"
+}

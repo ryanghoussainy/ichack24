@@ -50,7 +50,7 @@ const TimerScreen = ({ navigation }) => {
   const handleStop = () => {
     // make call to backend
     setStatus(0);
-    navigation.navigate("Dashboard");
+    navigation.navigate("Result");
   };
 
   return (

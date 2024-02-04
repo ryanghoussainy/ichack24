@@ -21,9 +21,8 @@ const TimerScreen = ({ navigation }) => {
           },
         }
       ).then((res) => {
-        console.log(res);
         return res.text();
-      });
+      }).catch((err) => {});
       console.log(url);
     };
     fetchUrl();
